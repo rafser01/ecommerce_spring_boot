@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-start</actionName>
+            <displayName>start</displayName>
+            <goals>
+                <goal>spring-boot:start</goal>
+            </goals>
+        </action>
+    </actions>
