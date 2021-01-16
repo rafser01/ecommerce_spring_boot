@@ -7,25 +7,25 @@
  
     <!-- Base Define -->
     <definition name="default" 
-                template="/WEB-INF/layouts/classic.jsp">  
+                template="/WEB-INF/layouts/dashboard/default.jsp">  
         <put-attribute name="title" value="" />  
-        <put-attribute name="header" value="/WEB-INF/basefragments/_header.jsp" />  
-        <put-attribute name="menu" value="/WEB-INF/basefragments/_menu.jsp" />  
+        <put-attribute name="header" value="/WEB-INF/layouts/dashboard/header.jsp" />  
+<!--        <put-attribute name="menu" value="/WEB-INF/basefragments/_menu.jsp" />  
         <put-attribute name="body" value="" />  
-        <put-attribute name="footer" value="/WEB-INF/basefragments/_footer.jsp" />  
+        <put-attribute name="footer" value="/WEB-INF/basefragments/_footer.jsp" />  -->
     </definition>  
  
     <!-- Home Page  -->
-    <definition name="homePage" extends="base.definition">  
+    <definition name="home_page" extends="default">  
         <put-attribute name="title" value="Home Page" />  
-        <put-attribute name="body" value="/WEB-INF/bodyfragments/_home.jsp" />  
+        <put-attribute name="body" value="/WEB-INF/layouts/dashboard/home.jsp" />  
     </definition>  
        
-    <!-- ContactUs Page -->
+<!--     ContactUs Page 
     <definition name="contactusPage" extends="base.definition">  
         <put-attribute name="title" value="Contact Us" />  
         <put-attribute name="body" value="/WEB-INF/bodyfragments/_contactus.jsp" />  
     </definition>    
- 
+ -->
   
 </tiles-definitions> 

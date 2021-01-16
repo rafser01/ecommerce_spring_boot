@@ -33,7 +33,7 @@ public class TilesConfigure {
         TilesConfigurer tilesConfigurer = new TilesConfigurer();
  
         // TilesView 3
-        tilesConfigurer.setDefinitions("/WEB-INF/layouts/dashboard.xml");
+        tilesConfigurer.setDefinitions("/WEB-INF/layouts/dashboard/dashboard.xml");
  
         return tilesConfigurer;
     }
