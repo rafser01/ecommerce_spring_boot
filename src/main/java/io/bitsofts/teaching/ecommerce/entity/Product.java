@@ -30,8 +30,8 @@ public class Product {
     String description;
     Category category;
     
-    @ManyToOne
-    @JoinColumn(name = "categoryId")
+//    @ManyToOne
+//    @JoinColumn(name = "categoryId")
     public Category getCategory() {
         return category;
     }

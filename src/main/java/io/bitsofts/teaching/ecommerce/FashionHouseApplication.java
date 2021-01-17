@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.orm.jpa.vendor.HibernateJpaSessionFactoryBean;
 
-@EnableAutoConfiguration
+
 @SpringBootApplication
 public class FashionHouseApplication {
 

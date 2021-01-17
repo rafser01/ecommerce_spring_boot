@@ -34,7 +34,7 @@ public class Category {
     public int getId() {
         return id;
     }
-    @OneToMany(mappedBy = "category")
+//    @OneToMany(mappedBy = "category")
     public Set<Product> getProducts() {
         return products;
     }
