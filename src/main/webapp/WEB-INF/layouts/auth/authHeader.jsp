@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-light static-top">
+<nav style="background-color: #175C7D" class="navbar navbar-expand-lg navbar-dark   static-top">
     <div class="container">
         <a class="navbar-brand" href="#">
             <img src="http://placehold.it/150x50?text=Logo" alt="">
