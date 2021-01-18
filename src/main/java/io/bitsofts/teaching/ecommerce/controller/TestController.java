@@ -30,16 +30,16 @@ public class TestController {
 //        System.out.println("--------------- "+c.getCategoryName());
     }
     
-    @RequestMapping(method = RequestMethod.GET, value = "/home")
-    public String home() {
-//        Category c = repository.findById(1);
-//        Iterator<Product> cs = c.getProducts().iterator();
-//        System.out.println("---------- "+c.getProducts().size()+c.getDescription());
-//        while (cs.hasNext()) {            
-//            System.out.println("-------- "+cs.next().getProductName());
-//        }
-//        System.out.println("--------------- "+c.getId()+c.getDescription()+c.getProducts().iterator().next().getId());
-        return "home_page";
-    }
+//    @RequestMapping(method = RequestMethod.GET, value = "/home")
+//    public String home() {
+////        Category c = repository.findById(1);
+////        Iterator<Product> cs = c.getProducts().iterator();
+////        System.out.println("---------- "+c.getProducts().size()+c.getDescription());
+////        while (cs.hasNext()) {            
+////            System.out.println("-------- "+cs.next().getProductName());
+////        }
+////        System.out.println("--------------- "+c.getId()+c.getDescription()+c.getProducts().iterator().next().getId());
+//        return "home_page";
+//    }
     
 }

@@ -5,8 +5,10 @@
  */
 package io.bitsofts.teaching.ecommerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,6 +31,8 @@ public class Product {
     double discount;
     String description;
     Category category;
+
+     
     
     @ManyToOne
     @JoinColumn(name = "categoryId")
