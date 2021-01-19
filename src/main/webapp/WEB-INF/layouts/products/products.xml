@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE tiles-definitions PUBLIC  
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
+        
+<tiles-definitions>  
+ 
+    <!-- Base Define -->
+    <definition name="products" 
+                template="/WEB-INF/layouts/products/template.jsp">  
+        <put-attribute name="title" value="" />  
+        <put-attribute name="slider" value="/WEB-INF/layouts/products/slider.jsp" />
+        <put-attribute name="trendingItems" value="/WEB-INF/layouts/products/trendingItems.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/layouts/products/footer.jsp" />
+        <!--<put-attribute name="popularItem" value="/WEB-INF/layouts/products/popularItem.jsp" />-->
+<!--        <put-attribute name="header" value="/WEB-INF/layouts/userDashboard/header.jsp" />  
+        <put-attribute name="menu" value="/WEB-INF/layouts/userDashboard/menu.jsp" />-->
+<!--        <put-attribute name="menu" value="/WEB-INF/basefragments/_menu.jsp" />  
+        <put-attribute name="body" value="" />  
+        <put-attribute name="footer" value="/WEB-INF/basefragments/_footer.jsp" />  -->
+    </definition>  
+ 
+    <!-- Home Page  -->
+ 
+       
+
+  
+</tiles-definitions> 

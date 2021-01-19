@@ -35,7 +35,16 @@ public class AuthController {
     @RequestMapping(method = RequestMethod.GET, value = "/login")
     public String login(@RequestParam("email") String email, @RequestParam("password") String password) {
         User u = ur.findByEmailAndPassword(email, password);
-        System.out.println("------user "+u.getName());
+        if(u != null) {
+            System.out.println("User type "+u.getType());
+            if(u.getType().equals("user")) {
+                // return user dashboard
+                return "userHomePage";
+            } else {
+                // return admin dashboard
+                return "admin_dashboard";
+            }
+        }
         return "login";
     }
 }

@@ -33,7 +33,8 @@ public class TilesConfigure {
         TilesConfigurer tilesConfigurer = new TilesConfigurer();
  
         // TilesView 3
-        String[] layouts = {"/WEB-INF/layouts/dashboard/dashboard.xml", "/WEB-INF/layouts/auth/authLayout.xml"};
+        String[] layouts = {"/WEB-INF/layouts/dashboard/dashboard.xml", "/WEB-INF/layouts/auth/authLayout.xml",
+        "/WEB-INF/layouts/userDashboard/userDashboard.xml", "/WEB-INF/layouts/products/products.xml"};
         tilesConfigurer.setDefinitions(layouts);
 
  

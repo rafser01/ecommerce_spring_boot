@@ -6,20 +6,20 @@
 <tiles-definitions>  
  
     <!-- Base Define -->
-    <definition name="default" 
+    <definition name="userDashboard" 
                 template="/WEB-INF/layouts/dashboard/default.jsp">  
         <put-attribute name="title" value="" />  
-        <put-attribute name="header" value="/WEB-INF/layouts/dashboard/header.jsp" />  
-        <put-attribute name="menu" value="/WEB-INF/layouts/dashboard/menu.jsp" />
+        <put-attribute name="header" value="/WEB-INF/layouts/userDashboard/header.jsp" />  
+        <put-attribute name="menu" value="/WEB-INF/layouts/userDashboard/menu.jsp" />
 <!--        <put-attribute name="menu" value="/WEB-INF/basefragments/_menu.jsp" />  
         <put-attribute name="body" value="" />  
         <put-attribute name="footer" value="/WEB-INF/basefragments/_footer.jsp" />  -->
     </definition>  
  
     <!-- Home Page  -->
-    <definition name="admin_dashboard" extends="default">  
+    <definition name="userHomePage" extends="userDashboard">  
         <put-attribute name="title" value="Home Page" />  
-        <put-attribute name="body" value="/WEB-INF/layouts/dashboard/home.jsp" />  
+        <put-attribute name="body" value="/WEB-INF/layouts/userDashboard/home.jsp" />  
     </definition>  
        
 <!--     ContactUs Page 
