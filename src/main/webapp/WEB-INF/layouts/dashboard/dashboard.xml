@@ -21,12 +21,15 @@
         <put-attribute name="title" value="Home Page" />  
         <put-attribute name="body" value="/WEB-INF/layouts/dashboard/home.jsp" />  
     </definition>  
+    <definition name="admin_categories" extends="default">  
+        <put-attribute name="title" value="Home Page" />  
+        <put-attribute name="body" value="/WEB-INF/layouts/dashboard/categories.jsp" />  
+    </definition> 
+    <definition name="admin_products" extends="default">  
+        <put-attribute name="title" value="Product List" />  
+        <put-attribute name="body" value="/WEB-INF/layouts/dashboard/productsList.jsp" />  
+    </definition> 
        
-<!--     ContactUs Page 
-    <definition name="contactusPage" extends="base.definition">  
-        <put-attribute name="title" value="Contact Us" />  
-        <put-attribute name="body" value="/WEB-INF/bodyfragments/_contactus.jsp" />  
-    </definition>    
- -->
+
   
 </tiles-definitions> 
