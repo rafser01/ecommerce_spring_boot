@@ -28,7 +28,7 @@ public class Product {
     String productName;
     double price;
     int stock;
-    double discount;
+    double discount=0;
     String description;
     Category category;
 
@@ -78,7 +78,7 @@ public class Product {
     public void setStock(int stock) {
         this.stock = stock;
     }
-    @Nullable
+    @Column(nullable = true)
     public double getDiscount() {
         return discount;
     }

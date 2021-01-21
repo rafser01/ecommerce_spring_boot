@@ -3,7 +3,7 @@
     <!-- Add Category -->
     <h4>Product entry form</h4>
     <div class="row">
-        <form action="/addCategory" method="POST" class="needs-validation" novalidate>
+        <form action="/addProduct" method="POST" class="needs-validation" novalidate>
             <div class="row g-3">
                 <div class="col-12">
                     <label for="productName" class="form-label">Product Name</label>
@@ -88,11 +88,19 @@
                         <th>Description</th>
                         <th>Category</th>
                         <th>Price</th>
-                        <th>Image</th>
+                        <th>Stock</th>
                     </tr>
                 </thead>
                 <tbody>
-
+                    <c:forEach items="#{products}" var="p">
+                        <tr>
+                            <td>${p.productName}</td>
+                            <td>${p.description}</td>
+                            <td>${p.category.categoryName}</td>
+                            <td>${p.price}</td>
+                            <td>${p.stock}</td>
+                        </tr>
+                    </c:forEach>
 
 
                 </tbody>

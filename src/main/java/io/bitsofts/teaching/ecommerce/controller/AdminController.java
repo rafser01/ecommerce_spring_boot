@@ -53,11 +53,18 @@ public class AdminController {
         Product p = new Product();
         p.setProductName(params.get("productName"));
         p.setDescription(params.get("description"));
+        p.setPrice(Double.parseDouble(params.get("price")));
+        p.setStock(Integer.parseInt(params.get("stock")));
+        String dis = params.get("discount");
+        System.out.println("-------"+dis.isEmpty());
+        p.setDiscount(dis != null && dis.isEmpty() == false ? Double.parseDouble(dis) : 0);
         Category c = new Category();
         c.setId(Integer.parseInt(params.get("category")));
         p.setCategory(c);
         pr.save(p);
         
+        ArrayList<Product> ps = pr.findAll();
+        m.addAttribute("products", ps);
         return "admin_products";
     }
     //consumes = "application/x-www-form-urlencoded"
