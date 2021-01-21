@@ -6,12 +6,12 @@
         <form action="/addCategory" method="POST" class="needs-validation" novalidate>
             <div class="row g-3">
                 <div class="col-12">
-                    <label for="categoryName" class="form-label">Category Name</label>
+                    <label for="productName" class="form-label">Product Name</label>
                     <div class="input-group">
 
-                        <input  type="text" class="form-control" name="categoryName" id="categoryName" placeholder="Category Name" required>
+                        <input  type="text" class="form-control" name="productName" id="productName" placeholder="Product Name" required>
                         <div class="invalid-feedback">
-                            Category name is required
+                            Product name is required
                         </div>
                     </div>
                 </div>
@@ -20,8 +20,47 @@
                     <label for="description" class="form-label">Description<!-- <span class="text-muted">(Optional)</span> --></label>
                     <input type="text" name="description" class="form-control" id="description" >
                     <div class="invalid-feedback">
-                        Please enter category description
+                        Please enter product description
                     </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <label for="stock" class="form-label">Stock</label>
+                        <input type="number" class="form-control" name="stock" id="stock" placeholder="Number of quanity " value="" required>
+                        <div class="invalid-feedback">
+                            Quantity must be in integer format
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number" class="form-control" name="price" id="price" placeholder="0.0" value="" required>
+                        <div class="invalid-feedback">
+                            Price is required.
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <label for="stock" class="form-label">Discount</label>
+                        <input type="number" class="form-control" name="discount" id="discount" placeholder="i.e. 10%" value="">
+
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="col-md-5">
+                            <label for="country" class="form-label">Category</label>
+                            <select class="form-select" name="category" id="category" required>
+                                <c:forEach items="${categories}" var="cat">
+                                    <option value="${cat.id}"> ${cat.categoryName}</option>
+                                </c:forEach>
+                                
+                            </select>
+                            
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="col-12">
@@ -33,7 +72,7 @@
                 </div>
 
 
-                <button class="w-100 btn btn-primary btn-lg" type="submit">Add Category</button>
+                <button class="w-100 btn btn-primary btn-lg" type="submit">Add Product</button>
         </form>
     </div>
     <!--End  add Category -->

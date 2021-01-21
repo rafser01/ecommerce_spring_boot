@@ -40,11 +40,26 @@ public class AdminController {
     }
     @RequestMapping(method = RequestMethod.GET, value = "/admin/products")
     public String getProducts(Model m) {
-//        ArrayList<Product> ps = pr.findAll();
-//        m.addAttribute("products", ps);
+        ArrayList<Category> categories = cr.findAll();
+        m.addAttribute("categories", categories);
+        // Add product list to view
+        ArrayList<Product> ps = pr.findAll();
+        m.addAttribute("products", ps);
         return "admin_products";
     }
     
+    @PostMapping(path = "/addProduct")
+    public String addProduct(@RequestParam Map<String, String> params, Model m) {
+        Product p = new Product();
+        p.setProductName(params.get("productName"));
+        p.setDescription(params.get("description"));
+        Category c = new Category();
+        c.setId(Integer.parseInt(params.get("category")));
+        p.setCategory(c);
+        pr.save(p);
+        
+        return "admin_products";
+    }
     //consumes = "application/x-www-form-urlencoded"
     @PostMapping(path = "/addCategory")
     public String addCategory(@RequestParam Map<String, String> params, Model m) {
