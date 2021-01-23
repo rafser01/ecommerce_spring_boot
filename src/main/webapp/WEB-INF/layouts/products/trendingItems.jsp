@@ -1,4 +1,5 @@
- <div class="product-area section">
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<div class="product-area section">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -13,12 +14,15 @@
                             <div class="nav-main">
                                 <!-- Tab Nav -->
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#man" role="tab">Man</a></li>
+                                    <c:forEach items="${categories}" var="category">
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#man" role="tab">${category.categoryName}</a></li>
+                                    </c:forEach>
+<!--                                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#man" role="tab">Man</a></li>
                                     <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#women" role="tab">Woman</a></li>
                                     <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#kids" role="tab">Kids</a></li>
                                     <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#accessories" role="tab">Accessories</a></li>
                                     <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#essential" role="tab">Essential</a></li>
-                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#prices" role="tab">Prices</a></li>
+                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#prices" role="tab">Prices</a></li>-->
                                 </ul>
                                 <!--/ End Tab Nav -->
                             </div>

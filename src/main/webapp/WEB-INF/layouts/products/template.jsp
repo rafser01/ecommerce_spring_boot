@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>    
 <html xmlns:jsp="http://java.sun.com/JSP/Page"
       xmlns:c="http://java.sun.com/jsp/jstl/core"
@@ -65,11 +66,11 @@
         <!-- End Preloader -->
 
 
-         
+
         <tiles:insertAttribute ignore="true" name="header"/>
         <!-- Slider Area -->
         <tiles:insertAttribute ignore="ture" name="slider"/>
-        
+
         <!--/ End Slider Area -->
 
         <!-- Start Small Banner  -->
@@ -77,40 +78,21 @@
             <div class="container-fluid">
                 <div class="row">
                     <!-- Single Banner  -->
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="single-banner">
-                            <img src="https://via.placeholder.com/600x370" alt="#">
-                            <div class="content">
-                                <p>Man's Collectons</p>
-                                <h3>Summer travel <br> collection</h3>
-                                <a href="#">Discover Now</a>
+                    <c:forEach items="${categories}" var="category">
+                        <div style="max-height: 400px" class="col-lg-4 col-md-6 col-12">
+                            <div class="single-banner">
+                                <img width="400px" height="400px" src="${category.img}" alt="#">
+                                <div class="content">
+                                    <p >${category.categoryName} Collectons</p>
+                                    <h3 style="color: #FFF">${category.description}</h3>
+                                    <a href="#">Discover Now</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- /End Single Banner  -->
-                    <!-- Single Banner  -->
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="single-banner">
-                            <img src="https://via.placeholder.com/600x370" alt="#">
-                            <div class="content">
-                                <p>Bag Collectons</p>
-                                <h3>Awesome Bag <br> 2020</h3>
-                                <a href="#">Shop Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /End Single Banner  -->
-                    <!-- Single Banner  -->
-                    <div class="col-lg-4 col-12">
-                        <div class="single-banner tab-height">
-                            <img src="https://via.placeholder.com/600x370" alt="#">
-                            <div class="content">
-                                <p>Flash Sale</p>
-                                <h3>Mid Season <br> Up to <span>40%</span> Off</h3>
-                                <a href="#">Discover Now</a>
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
+
+                    
+                    
                     <!-- /End Single Banner  -->
                 </div>
             </div>
