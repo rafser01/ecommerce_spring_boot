@@ -6,14 +6,17 @@
 package io.bitsofts.teaching.ecommerce.controller;
 
 import io.bitsofts.teaching.ecommerce.entity.Category;
+import io.bitsofts.teaching.ecommerce.entity.Product;
 import io.bitsofts.teaching.ecommerce.repository.CategoryRepository;
 import io.bitsofts.teaching.ecommerce.repository.ProductRepository;
 import java.util.ArrayList;
+import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -33,8 +36,23 @@ public class ProductsController {
     }
     
     @RequestMapping(method = RequestMethod.GET, value = "/products")
-    public String getProducts(Model m) {
+    public String getProducts(@RequestParam (name = "type", defaultValue = "gents") String type,Model m) {
         m.addAttribute("categories" , getCategories());
+        
+        String t="";
+        ArrayList<Product> products=new ArrayList<>();
+        // dynamic
+        for(int i=0; i< getCategories().size(); i++) {
+            Category c = getCategories().get(i);
+            System.out.println("ccc "+c.getCategoryName().toLowerCase()+type.toLowerCase().equals(c.getCategoryName().toLowerCase()));
+            if(type.toLowerCase().equals(c.getCategoryName().toLowerCase())) {
+                products =  new ArrayList<>(c.getProducts());
+                t = c.getCategoryName();
+            }
+        }
+        m.addAttribute("caType", t);
+        m.addAttribute("selectedCatProducts", products);
+        System.out.println("----------"+products.size());
         return "products";
     }
     

@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <div class="product-area section">
             <div class="container">
                 <div class="row">
@@ -15,7 +16,8 @@
                                 <!-- Tab Nav -->
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     <c:forEach items="${categories}" var="category">
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#man" role="tab">${category.categoryName}</a></li>
+                                        
+                                        <li class="nav-item"><a class="nav-link ${caType == category.categoryName ? 'active' : ''}  "   href="products?type=${category.categoryName}" >${category.categoryName}</a></li>
                                     </c:forEach>
 <!--                                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#man" role="tab">Man</a></li>
                                     <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#women" role="tab">Woman</a></li>
@@ -31,7 +33,8 @@
                                 <div class="tab-pane fade show active" id="man" role="tabpanel">
                                     <div class="tab-single">
                                         <div class="row">
-                                            <div class="col-xl-3 col-lg-4 col-md-4 col-12">
+                                            <c:forEach items="${selectedCatProducts}" var="p">
+                                                <div class="col-xl-3 col-lg-4 col-md-4 col-12">
                                                 <div class="single-product">
                                                     <div class="product-img">
                                                         <a href="product-details.html">
@@ -50,14 +53,15 @@
                                                         </div>
                                                     </div>
                                                     <div class="product-content">
-                                                        <h3><a href="product-details.html">Women Hot Collection</a></h3>
+                                                        <h3><a href="product-details.html">${p.productName}</a></h3>
                                                         <div class="product-price">
-                                                            <span>$29.00</span>
+                                                            <span>BDT ${p.price}</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-3 col-lg-4 col-md-4 col-12">
+                                            </c:forEach>
+<!--                                            <div class="col-xl-3 col-lg-4 col-md-4 col-12">
                                                 <div class="single-product">
                                                     <div class="product-img">
                                                         <a href="product-details.html">
@@ -242,7 +246,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>-->
                                         </div>
                                     </div>
                                 </div>
