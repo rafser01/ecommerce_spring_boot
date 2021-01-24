@@ -44,15 +44,11 @@ public class ProductsController {
         // dynamic
         for(int i=0; i< getCategories().size(); i++) {
             Category c = getCategories().get(i);
-            System.out.println("ccc "+c.getCategoryName().toLowerCase()+type.toLowerCase().equals(c.getCategoryName().toLowerCase()));
             if(type.toLowerCase().equals(c.getCategoryName().toLowerCase())) {
-                products =  new ArrayList<>(c.getProducts());
                 t = c.getCategoryName();
             }
         }
-        m.addAttribute("caType", t);
-        m.addAttribute("selectedCatProducts", products);
-        System.out.println("----------"+products.size());
+        m.addAttribute("caType", t);    
         return "products";
     }
     

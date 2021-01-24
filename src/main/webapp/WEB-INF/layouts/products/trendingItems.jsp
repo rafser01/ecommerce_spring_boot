@@ -16,8 +16,8 @@
                                 <!-- Tab Nav -->
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     <c:forEach items="${categories}" var="category">
-                                        
-                                        <li class="nav-item"><a class="nav-link ${caType == category.categoryName ? 'active' : ''}  "   href="products?type=${category.categoryName}" >${category.categoryName}</a></li>
+                                        <li class="nav-item"><a class="nav-link ${caType == category.categoryName ? 'active' : ''}"  data-toggle="tab"   
+                                                                href="#${category.categoryName}" role="tab" >${category.categoryName}</a></li>
                                     </c:forEach>
 <!--                                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#man" role="tab">Man</a></li>
                                     <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#women" role="tab">Woman</a></li>
@@ -30,15 +30,18 @@
                             </div>
                             <div class="tab-content" id="myTabContent">
                                 <!-- Start Single Tab -->
-                                <div class="tab-pane fade show active" id="man" role="tabpanel">
+                                <c:forEach items="${categories}" var="c">
+                                    <div class="tab-pane fade show active" id="${c.categoryName}" role="tabpanel">
                                     <div class="tab-single">
                                         <div class="row">
-                                            <c:forEach items="${selectedCatProducts}" var="p">
+                                            <c:forEach items="${c.products}" var="p">
                                                 <div class="col-xl-3 col-lg-4 col-md-4 col-12">
                                                 <div class="single-product">
                                                     <div class="product-img">
                                                         <a href="product-details.html">
-                                                            <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
+                                                            <c:forEach items="${p.images}" var="img">
+                                                                <img class="default-img" src="<c:out value="${img.image}" />" alt="#">
+                                                            </c:forEach>
                                                             <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
                                                         </a>
                                                         <div class="button-head">
@@ -250,6 +253,8 @@
                                         </div>
                                     </div>
                                 </div>
+                                </c:forEach>
+                                
                                 <!--/ End Single Tab -->
                                 <!-- Start Single Tab -->
                                 <div class="tab-pane fade" id="women" role="tabpanel">

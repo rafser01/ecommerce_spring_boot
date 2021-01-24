@@ -6,6 +6,8 @@
 package io.bitsofts.teaching.ecommerce.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.springframework.lang.Nullable;
 
@@ -31,7 +34,16 @@ public class Product {
     double discount=0;
     String description;
     Category category;
+    Set<ProductImage> images=new HashSet<>();
 
+    @OneToMany(mappedBy = "product")
+    public Set<ProductImage> getImages() {
+        return images;
+    }
+
+    public void setImages(Set<ProductImage> images) {
+        this.images = images;
+    }
      
     
     @ManyToOne
