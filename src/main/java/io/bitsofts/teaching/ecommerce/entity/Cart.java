@@ -25,7 +25,7 @@ import javax.persistence.Table;
 @Table(name = "cart")
 public class Cart {
     int id;
-    int status;
+    int status; // if order success - 1, else 0/null
     User user = new User();
     Set<CartItem> cartItems= new HashSet<CartItem>();
     

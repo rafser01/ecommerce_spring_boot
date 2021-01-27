@@ -1,3 +1,4 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <header class="header shop">
             <!-- Topbar -->
             <div class="topbar">
@@ -79,26 +80,29 @@
                                     <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
                                 </div>
                                 <div class="sinlge-bar shopping">
-                                    <a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
+                                    <a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">${sessionScope.cartSize}</span></a>
                                     <!-- Shopping Item -->
                                     <div class="shopping-item">
                                         <div class="dropdown-cart-header">
-                                            <span>2 Items</span>
+                                            <span>${sessionScope.cartSize} Items</span>
                                             <a href="#">View Cart</a>
                                         </div>
                                         <ul class="shopping-list">
-                                            <li>
+                                            <c:forEach items="${sessionScope.cart.cartItems}" var="item">
+                                               <li>
                                                 <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
                                                 <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-                                                <h4><a href="#">Woman Ring</a></h4>
-                                                <p class="quantity">1x - <span class="amount">$99.00</span></p>
-                                            </li>
-                                            <li>
+                                                <h4><a href="#">${item.product.productName}</a></h4>
+                                                <p class="quantity">1x - <span class="amount">BDT ${item.product.price}</span></p>
+                                            </li> 
+                                            </c:forEach>
+                                            
+<!--                                            <li>
                                                 <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
                                                 <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
                                                 <h4><a href="#">Woman Necklace</a></h4>
                                                 <p class="quantity">1x - <span class="amount">$35.00</span></p>
-                                            </li>
+                                            </li>-->
                                         </ul>
                                         <div class="bottom">
                                             <div class="total">

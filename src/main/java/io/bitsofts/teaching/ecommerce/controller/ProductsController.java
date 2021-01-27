@@ -6,13 +6,18 @@
 package io.bitsofts.teaching.ecommerce.controller;
 
 import io.bitsofts.teaching.ecommerce.entity.Cart;
+import io.bitsofts.teaching.ecommerce.entity.CartItem;
 import io.bitsofts.teaching.ecommerce.entity.Category;
 import io.bitsofts.teaching.ecommerce.entity.Product;
 import io.bitsofts.teaching.ecommerce.entity.User;
+import io.bitsofts.teaching.ecommerce.repository.CartItemRepository;
+import io.bitsofts.teaching.ecommerce.repository.CartRepository;
 import io.bitsofts.teaching.ecommerce.repository.CategoryRepository;
 import io.bitsofts.teaching.ecommerce.repository.ProductRepository;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import javax.servlet.http.HttpSession;
 import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +44,12 @@ public class ProductsController {
     @Autowired
     private ProductRepository pr;
 
+    @Autowired
+    private CartRepository cartRepository;
+
+    @Autowired
+    private CartItemRepository cartItemRepository;
+
     public ArrayList<Category> getCategories() {
         return cr.findAll();
     }
@@ -46,7 +57,7 @@ public class ProductsController {
     @RequestMapping(method = RequestMethod.GET, value = "/products")
     public String getProducts(@RequestParam(name = "type", defaultValue = "gents") String type, Model m) {
         m.addAttribute("categories", getCategories());
-
+        
         String t = "";
         ArrayList<Product> products = new ArrayList<>();
         // dynamic
@@ -62,16 +73,33 @@ public class ProductsController {
 
     @GetMapping(path = "/addToCart")
     public String addToCart(@RequestParam Map<String, String> params, Model m, HttpSession session) {
-//        Product p = pr.findById(params.);
+//        
 //          Cart c = 
 //        m.addAttribute(string, p)
         User user = (User) session.getAttribute("userId");
         if (user != null) {
             System.out.println("User ID " + user.getId());
+            Cart c = (Cart) session.getAttribute("cart");
+            if (c != null) {
+
+            } else {
+                c = new Cart();
+
+            }
+            Set<CartItem> items = c.getCartItems();
+            CartItem item = new CartItem();
+            Product p = pr.findById(Integer.parseInt(params.get("id")));
+            item.setProduct(p);
+            item.setQuantity(1);
+            item.setCart(c);
+            items.add(item);
+            c.setCartItems(items);
+            session.setAttribute("cart", c);
+            session.setAttribute("cartSize", c.getCartItems().size());
         } else {
-            return "login";
+            return "redirect:loginView";
         }
-        return "products";
+        return "redirect:products";
     }
 
 }
