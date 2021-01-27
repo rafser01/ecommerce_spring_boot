@@ -53,11 +53,54 @@ public class ProductsController {
     public ArrayList<Category> getCategories() {
         return cr.findAll();
     }
+    public double returnTotal(Cart c) {
+        double total = 0;
+        ArrayList<CartItem> list = new ArrayList<>(c.getCartItems());
+        for(int i = 0; i<list.size(); i++) {
+            CartItem item = list.get(i);
+            total += item.getProduct().getPrice();
+        }
+        return total;
+    }
+
+    public void storeCartToSession(HttpSession session, Model m, Product p) {
+        if (p != null) {
+            Cart c = (Cart) session.getAttribute("cart");
+            if (c != null) {
+
+            } else {
+                c = new Cart();
+
+            }
+            Set<CartItem> items = c.getCartItems();
+            CartItem item = new CartItem();
+            item.setProduct(p);
+            item.setQuantity(1);
+            item.setCart(c);
+            items.add(item);
+            c.setCartItems(items);
+            session.setAttribute("cart", c);
+            session.setAttribute("cartSize", c.getCartItems().size());
+            session.setAttribute("total", returnTotal(c));
+        } else {
+            Cart c = (Cart) session.getAttribute("cart");
+            if (c != null) {
+
+            } else {
+                c = new Cart();
+
+            }
+
+            session.setAttribute("cart", c);
+            session.setAttribute("cartSize", c.getCartItems().size());
+            session.setAttribute("total", returnTotal(c));
+        }
+    }
 
     @RequestMapping(method = RequestMethod.GET, value = "/products")
-    public String getProducts(@RequestParam(name = "type", defaultValue = "gents") String type, Model m) {
+    public String getProducts(@RequestParam(name = "type", defaultValue = "gents") String type, Model m, HttpSession session) {
         m.addAttribute("categories", getCategories());
-        
+
         String t = "";
         ArrayList<Product> products = new ArrayList<>();
         // dynamic
@@ -68,38 +111,26 @@ public class ProductsController {
             }
         }
         m.addAttribute("caType", t);
+        this.storeCartToSession(session, m, null);
         return "products";
     }
 
     @GetMapping(path = "/addToCart")
     public String addToCart(@RequestParam Map<String, String> params, Model m, HttpSession session) {
-//        
-//          Cart c = 
-//        m.addAttribute(string, p)
+        Product p = pr.findById(Integer.parseInt(params.get("id")));
+
         User user = (User) session.getAttribute("userId");
-        if (user != null) {
-            System.out.println("User ID " + user.getId());
-            Cart c = (Cart) session.getAttribute("cart");
-            if (c != null) {
-
-            } else {
-                c = new Cart();
-
-            }
-            Set<CartItem> items = c.getCartItems();
-            CartItem item = new CartItem();
-            Product p = pr.findById(Integer.parseInt(params.get("id")));
-            item.setProduct(p);
-            item.setQuantity(1);
-            item.setCart(c);
-            items.add(item);
-            c.setCartItems(items);
-            session.setAttribute("cart", c);
-            session.setAttribute("cartSize", c.getCartItems().size());
+        if (user != null) {        
+            this.storeCartToSession(session, m, p);
         } else {
             return "redirect:loginView";
         }
         return "redirect:products";
+    }
+    
+    @GetMapping(path = "/checkoutPage")
+    public String checkoutPage(){
+        return "checkoutPage";
     }
 
 }

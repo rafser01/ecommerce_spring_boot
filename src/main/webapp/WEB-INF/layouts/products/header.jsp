@@ -107,9 +107,9 @@
                                         <div class="bottom">
                                             <div class="total">
                                                 <span>Total</span>
-                                                <span class="total-amount">$134.00</span>
+                                                <span class="total-amount">BDT ${sessionScope.total}</span>
                                             </div>
-                                            <a href="checkout.html" class="btn animate">Checkout</a>
+                                            <a href="/checkoutPage" class="btn animate">Checkout</a>
                                         </div>
                                     </div>
                                     <!--/ End Shopping Item -->
