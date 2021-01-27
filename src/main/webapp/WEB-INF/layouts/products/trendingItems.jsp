@@ -41,8 +41,10 @@
                                                         <a href="product-details.html">
                                                             <c:forEach items="${p.images}" var="img">
                                                                 <img class="default-img" src="<c:out value="${img.image}" />" alt="#">
+                                                                <img class="hover-img" src="<c:out value="${img.image}" />" alt="#">
                                                             </c:forEach>
-                                                            <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
+                                                                
+<!--                                                            <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">-->
                                                         </a>
                                                         <div class="button-head">
                                                             <div class="product-action">
@@ -51,7 +53,7 @@
                                                                 <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
                                                             </div>
                                                             <div class="product-action-2">
-                                                                <a title="Add to cart" href="#">Add to cart</a>
+                                                                <a title="Add to cart" href="/addToCart?id=${p.id}">Add to cart</a>
                                                             </div>
                                                         </div>
                                                     </div>

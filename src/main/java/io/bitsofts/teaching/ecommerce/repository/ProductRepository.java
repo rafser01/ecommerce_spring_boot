@@ -20,4 +20,5 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer>{
     ArrayList<Product> findAll();
+    Product findById(int id);
 }

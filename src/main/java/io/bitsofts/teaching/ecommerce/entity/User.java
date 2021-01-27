@@ -5,10 +5,13 @@
  */
 package io.bitsofts.teaching.ecommerce.entity;
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -24,6 +27,16 @@ public class User {
     String email;
     String password;
     String type;
+    Set<Cart> carts = new HashSet<Cart>();
+
+    @OneToMany(mappedBy = "user")
+    public Set<Cart> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(Set<Cart> carts) {
+        this.carts = carts;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

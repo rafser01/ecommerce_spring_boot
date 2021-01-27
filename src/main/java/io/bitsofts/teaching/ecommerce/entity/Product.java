@@ -8,6 +8,7 @@ package io.bitsofts.teaching.ecommerce.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -35,7 +36,16 @@ public class Product {
     String description;
     Category category;
     Set<ProductImage> images=new HashSet<>();
+    Set<CartItem> cartItems=new HashSet<>();
 
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    public Set<CartItem> getCartItems() {
+        return cartItems;
+    }
+
+    public void setCartItems(Set<CartItem> cartItems) {
+        this.cartItems = cartItems;
+    }
     @OneToMany(mappedBy = "product")
     public Set<ProductImage> getImages() {
         return images;
